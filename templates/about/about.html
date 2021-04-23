@@ -1,0 +1,56 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Oregano&display=swap" rel="stylesheet">
+
+<section class="about-us text-center text-md-left">
+    <div class="container">
+        <h1 class="title title-page text-center mb-4 mb-md-3">About us</h1>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4 col-12 order-2 order-md-1">
+                <div class="about-us-image">
+                    <picture>
+                        <img class=""
+                             src="https://assets.radical.storage/static/storage/static-pages/about-us-icon.svg"
+                             alt='About us'
+                             loading="eager"
+                             width="253" height="270.695">
+                    </picture>
+                </div>
+            </div>
+            <div class="col-md-8 col-12 order-1 order-md-2">
+                <div class="about-us-text">
+                    <p class="text text-fs-16 mb-md-1 mb-4">
+                        Don’t know where to leave your luggage after checking out of the hotel or before checking in?
+                    </p>
+                    <p class="text text-fs-16 mb-md-1 mb-4">
+                        Do you have a business meeting and want to free yourself from hand baggage?
+                    </p>
+                    <p class="text text-fs-16 mb-md-1 mb-4">
+                        Are you planning to visit a museum, but you don’t want to take that heavy backpack with you?
+                    </p>
+                    <p class="text text-fs-16 mt-md-5">
+                        <span class="font-weight-semibold">The solution to all your problems is Radical Storage</span>
+                    </p>
+                </div>
+                <div class="about-us-button">
+                    <a href="/" class="btn-primary btn-regular d-block d-md-inline-block m-auto m-md-0">Book now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-us-content bg-grey text-center text-md-left">
+    <div class="container">
+        <div class="about-us-text">
+            <p class="text text-fs-16 mb-4">
+                Radical Storage has been offering a convenient luggage storage service for years and has always relied on local companies that are safe and equipped with adequate storage space.
+            </p>
+            <p class="text text-fs-16 mb-4">
+                Our main goal is to make your holiday or business trip lighter and more enjoyable. We&#39;ll take care of your belongings from the first to the last moment.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

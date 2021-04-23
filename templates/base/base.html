@@ -1,0 +1,126 @@
+ {%load static %}
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"> 
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js'></script>
+     <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <style>
+      .dropdown-content
+      {
+top: 53px !important;
+width:190px !important;
+      }
+    </style>
+    <body>
+<nav style="background-color: #FEC62A; height: 100px;">
+    <div class="nav-wrapper container" >
+      <a href="/" class="brand-logo left" style="font-family: 'Arial';font-size:2rem"><img src='{% static "Group 1.svg"%}' style="margin-top: -25px;"> </a>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" style="margin-left: 400px; margin-top: 25px; color: black;">menu</i></a>
+     
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-top: 25px; ">
+        <li><a href="/">Home</a></li>
+        <li><a href="/howitworks">How It Works</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        {% if not request.session.username %}
+        <li><a class="dropdown-button" href="#!" data-activates='dropdown1'>Login/Register<i class="material-icons right">arrow_drop_down</i></a></li>
+     {% else %}
+        <li><a class="dropdown-button" href="#!" data-activates='dropdown2'>Account<i class="material-icons right">arrow_drop_down</i></a></li>
+     {% endif %}
+      </ul>
+    </div>
+  </nav>
+    <ul id="slide-out" class="side-nav">
+    
+        <li><a href="/">Home</a></li>
+        <li><a>How It Works</a></li>
+        <li><a>About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li style="margin-left:18px">
+            <a class="collapsible-header">Account<i class="material-icons right">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+               {% if not request.session.username %}
+      <li><a href="/user/login" class="black-text"><i class="material-icons left  text-lighten-2" style="color:#FEC62A ;">person</i> Customer</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="/manager/login1" class="black-text"><i class="material-icons left t text-lighten-2" style="color: #FEC62A;">room_service</i> Admin</a></li>
+  {% else %}
+   {% if request.session.type == 'customer' %}
+        <li><a href="/user/dashboard"><i class="material-icons left text-lighten-2" style="color: #FEC62A;">dashboard</i> Dashboard</a></li>
+                  {% else %}
+        <li><a href="/manager/dashboard1"><i class="material-icons left  text-lighten-2" style="color: #FEC62A;">dashboard</i> Dashboard</a></li>         
+                  {% endif %}
+        <li><a href="/logout"><i class="material-icons left  text-lighten-2">exit_to_app</i> Logout</a></li>
+     {% endif %}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+  </ul>
+  <ul id='dropdown1' class='dropdown-content' style="margin-top: 30px;">
+    <li><a href="/user/login" class="black-text"><i class="material-icons left text-lighten-2" style="color: #FEC62A;">person</i> Customer</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="/manager/login1" class="black-text"><i class="material-icons left text-lighten-2" style="color: #FEC62A;">room_service</i> Admin</a></li>
+  </ul>
+    <ul id='dropdown2' class='dropdown-content' style="margin-top: 30px;">
+     {% if request.session.type == 'customer' %}
+       <li><a href="/user/dashboard"> <i class="material-icons left text-lighten-2" style="color: #FEC62A;">dashboard</i>Dashboard</a></li>
+                  {% else %}
+       <li><a href="/manager/dashboard1"> <i class="material-icons left text-lighten-2" style="color: #FEC62A;">dashboard</i>Dashboard</a></li>    
+                  {% endif %}
+        <li><a href="/logout"> <i class="material-icons left text-lighten-2" style="color: #FEC62A;">exit_to_app</i>Logout</a></li>
+    </ul>
+{% block content %}
+
+{%endblock %}
+        <footer class="page-footer" style="background-color: #FEC62A;">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="black-text" style="font-family: 'Arial'; color: black;">Luggage Room</h5>
+                <p class="black-text text-lighten-4">Get your storage booked in seconds with amazing offers.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="black-text" style="font-family:'Times New Roman';color: black;">Important Links</h5>
+                <ul style="color: black;">
+                  <li><a class="black-text text-lighten-3" href="/">Home</a></li>
+                  <li><a class="black-text text-lighten-3" href="/contact-us">Contact Us</a></li>
+                  {% if not request.session.username %}
+                  {% if request.session.type == 'customer' %}
+                  <li><a class="black-text text-lighten-3" href="/user/login">Customer</a></li>
+                  {% else %}
+                  <li><a class="black-text text-lighten-3" href="/manager/login1">Admin</a></li>
+                  {% endif %}
+                  {% else %}
+                  <li><a class="black-text text-lighten-3" href="/logout">Logout</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container" style="color: black;">
+            © 2020-21 All right reserved
+            </div>
+          </div>
+        </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script> 
+      $(".button-collapse").sideNav();
+    $('.dropdown-button').dropdown({
+      hover:true
+}
+  );
+    </script>
+    </body>
+  </html>
