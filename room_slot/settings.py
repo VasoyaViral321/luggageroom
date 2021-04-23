@@ -138,7 +138,7 @@ EMAIL_HOST_PASSWORD = 'viralgnu315'
 EMAIL_USE_SSL = False
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
