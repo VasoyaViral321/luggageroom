@@ -26,7 +26,7 @@ SECRET_KEY = 'kd70*3-e22q4_2b33!ay*47kpo41g4_oduenmx9t3t4bvr7ynm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['luggageroom.herokuapp.com']
+ALLOWED_HOSTS = ['luggageroom.herokuapp.com','localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'room_admin',
     'customer',
     'rest_framework',
+    'room_slot',
 ]
 
 MIDDLEWARE = [
